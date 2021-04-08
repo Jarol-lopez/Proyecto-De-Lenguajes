@@ -1,8 +1,19 @@
 -----------TABLA DE ELEMENTOS-----------
-Palabras Reservadas: 8
-Simbolos: 9
-Ciclos: 0
-Condicional: 1
-Variables: 2
-Numeros: 2
-Aritmeticos: 0
+Palabras Reservadas: 54
+Simbolos: 54
+Ciclos: 3
+Condicional: 2
+Elementos: 41
+Variables: 5
+Numeros: 18
+Aritmeticos: 1
+Giros de camara: 2
+Inclinaciones de camara: 1
+Veces que se ajusto la altura de la camara: 2
+Giros de las ruedas: 1
+Veces que se avanzo: 1
+Veces que se retrocedio: 1
+Veces que se detuvo: 2
+Fotos tomadas: 2
+Fotos enviadas: 2
+Ubicaciones enviadas: 2
