@@ -4,12 +4,18 @@
 #include <string.h>
 using namespace std;
 
-void AnalizadorCaracter(char caracter);// FunciÛn para leer caracter a caracter el contenido del archivo entrante y asignarle un estado.
-void Estados();//FunciÛn para mandar los estados de los caracteres leÌdos
-void PalabrasReservadas();//FunciÛn para identificar las palabras reservadas del lenguaje
+void AnalizadorCaracter(char caracter);// Funci√≥n para leer caracter a caracter el contenido del archivo entrante y asignarle un estado.
+void Estados();//Funci√≥n para mandar los estados de los caracteres le√≠dos
+void PalabrasReservadas();//Funci√≥n para identificar las palabras reservadas del lenguaje
 
-//Arreglo que contiene las palabras reservadas del lenguaje:
-const char *reservadas[] = {"para","mientras","hacer","si","sino","opciones","caso","defecto","fin","string","int","boolean","float","verdadero","falso","inicioprograma","finprograma"};
+//TABLA DE S√çMBOLOS en forma de arreglo bidimensional que contiene las palabras reservadas del lenguaje:
+const char *reservadas[][2] = {{"para","Ciclo para, para repetir instrucciones"},{"mientras","Ciclo mientras, para repetir instrucciones"},
+{"hacer","Ciclo hacer, la misma idea del do while"},{"si","Condicional si, para evaluar condiciones"},
+{"sino","Para ejecutar instrucciones en caso de que no se cumpla la condici√≥n en el condicional si"},{"opciones","Condicional opciones, la misma idea del switch"},
+{"caso","Los casos del condicional opciones"},{"defecto","La opci√≥n por defecto del condicional opciones si no se cumple ninguno de los casos"},
+{"fin","Para declarar el fin de las estructuras"},{"string","Tipo de dato de cadena"},{"int","Tipo de dato num√©rico entero"},
+{"boolean","Tipo de dato booleano, verdadero, falso, 1 √≥ 0"},{"float","Tipo de dato num√©rico decimal"},{"verdadero","Valor verdadero"},{"falso","Valor falso"},
+{"inicioprograma","Para declarar el inicio del programa"},{"finprograma","Para declarar el fin del programa"}};
 
 int Tamano=sizeof(reservadas)/sizeof(char *);//El tamano de 'reservadas' y el tamano de memoria del char
 char palabraIngresada[70]; //Variable para almacenar los caracteres concatenados que forman las palabras
@@ -19,7 +25,7 @@ enum TEstados{q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,
 //Iniciando el estado en q0
 TEstados Estado=q0;
 
-//Contadores de los elementos de la tabla que se escribir· en el archivo de salida:
+//Contadores de los elementos de la tabla que se escribir√° en el archivo de salida:
 int contadorVariables=0;
 int contadorNumeros=0;
 int contadorPalabrasReservadas=0;
@@ -31,8 +37,8 @@ int contadorCondicional=0;
 
 int main(){
 	char caracter2; //Variable a usar para leer el contenido del archivo caracter a caracter
-	FILE *archivoE; //Archivo de entrada que contendr· el programa en el lenguaje definido
-	FILE *archivoS; //Archivo de salida (en Èl se imprimir· la tabla)
+	FILE *archivoE; //Archivo de entrada que contendr√° el programa en el lenguaje definido
+	FILE *archivoS; //Archivo de salida (en √©l se imprimir√° la tabla)
    
 	archivoE=fopen("archivoEntrada.txt", "r" ); //Abrimos el archivo que vamos a leer
 	archivoS=fopen("archivoSalida.txt", "wt"); //Preparamos el archivo de escritura
@@ -43,7 +49,7 @@ int main(){
 	}
 	
 	while(true){ // Bucle para leer el archivo
-		caracter2=fgetc(archivoE); //la funciÛn 'fgetch' toma el contenido del archivo y lo itera caracter a caracter
+		caracter2=fgetc(archivoE); //la funci√≥n 'fgetch' toma el contenido del archivo y lo itera caracter a caracter
 		
 		if(caracter2==EOF){ //EOF:End Of File (fin del archivo), si se llega al final del archivo se termina el proceso
 			break;
@@ -51,7 +57,7 @@ int main(){
 		
 		AnalizadorCaracter(caracter2);
 		
-		//Se analiza el caracter ';' para contarlo como sÌmbolo 
+		//Se analiza el caracter ';' para contarlo como s√≠mbolo 
 		if(caracter2==';'){
 			contadorSimbolos++;
 		}
@@ -220,9 +226,9 @@ void Estados(){
 			break;
 			case 3: PalabrasReservadas(); // Para las palabras reservadas
 			break;
-			case 4:contadorNumeros++; //Para lo n˙meros 0 ... 9
+			case 4:contadorNumeros++; //Para lo n√∫meros 0 ... 9
 			break;
-			case 5:contadorNumeros++; // Para los n˙meros 0 ... 9
+			case 5:contadorNumeros++; // Para los n√∫meros 0 ... 9
 			break;
 			case 6:contadorNumeros++; // 0 ... 9
 			break;
@@ -230,27 +236,27 @@ void Estados(){
 			break;
 			case 8:contadorSignos++; // Para el signo  '+'
 			break;
-			case 9:contadorSimbolos++; // Para el sÌmbolo '='
+			case 9:contadorSimbolos++; // Para el s√≠mbolo '='
 			break;
 			case 10:contadorSignos++; // Para el signo '-'
 			break;
-			case 11:contadorSimbolos++; // Para el sÌmbolo '=
+			case 11:contadorSimbolos++; // Para el s√≠mbolo '=
 			break;
-			case 12:contadorSimbolos++; // Para el sÌmbolo '<'
+			case 12:contadorSimbolos++; // Para el s√≠mbolo '<'
 			break;
-			case 14:contadorSimbolos++; // Para el sÌmbolo '/' '>'
+			case 14:contadorSimbolos++; // Para el s√≠mbolo '/' '>'
 			break;
-			case 15:contadorSimbolos++; // Para el sÌmbolo '=' 
+			case 15:contadorSimbolos++; // Para el s√≠mbolo '=' 
 			break;
-			case 16:contadorSimbolos++; // Para los sÌmbolo '/' '=' ';'
+			case 16:contadorSimbolos++; // Para los s√≠mbolo '/' '=' ';'
 			break;
 			case 17:contadorSignos++; // Para el signo '-' '+'
 			break;
 			case 18:contadorSignos++; // Para los signos  '/' '*' '^' '!'
 			break;
-			case 19:contadorSimbolos++; // Para los sÌmbolos '.' '\n' '\t' etc... 
+			case 19:contadorSimbolos++; // Para los s√≠mbolos '.' '\n' '\t' etc... 
 			break;
-			case 20:contadorNumeros++; 	//Para los n˙meros .   0 ... 9
+			case 20:contadorNumeros++; 	//Para los n√∫meros .   0 ... 9
 			break;
 			default:
 				break;
@@ -259,10 +265,10 @@ void Estados(){
 			Estado = q0;	
 }
 
-//FunciÛn utilizada para verificar las palabras han sido definidas como reservadas
+//Funci√≥n utilizada para verificar las palabras han sido definidas como reservadas
 void PalabrasReservadas(){
 	for(int i=0;i<Tamano;i++){
-		//utilizaremos la funciÛn 'strcmp' que se encarga de comparar caracter por caracter dos strings e identificaremos las palabras reservadas
+		//utilizaremos la funci√≥n 'strcmp' que se encarga de comparar caracter por caracter dos strings e identificaremos las palabras reservadas
 		if(strcmp(reservadas[i],palabraIngresada)==0){
 			
 			//Contar Ciclo 'para'
