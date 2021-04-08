@@ -269,30 +269,30 @@ void Estados(){
 void PalabrasReservadas(){
 	for(int i=0;i<Tamano;i++){
 		//utilizaremos la función 'strcmp' que se encarga de comparar caracter por caracter dos strings e identificaremos las palabras reservadas
-		if(strcmp(reservadas[i],palabraIngresada)==0){
+		if(strcmp(reservadas[i][0],palabraIngresada)==0){
 			
 			//Contar Ciclo 'para'
-			if(strcmp(reservadas[0],palabraIngresada)==0){
+			if(strcmp(reservadas[0][0],palabraIngresada)==0){
 				contadorCiclos++;
 			}
 
 			//Contar Ciclo 'mientras'
-			if(strcmp(reservadas[1],palabraIngresada)==0){
+			if(strcmp(reservadas[1][0],palabraIngresada)==0){
 				contadorCiclos++;
 			}
 				
 			//Contar Ciclo 'hacer'
-			if(strcmp(reservadas[2],palabraIngresada)==0){
+			if(strcmp(reservadas[2][0],palabraIngresada)==0){
 				contadorCiclos++;
 			}
 			
 			//Contar Condicional 'si'
-			if(strcmp(reservadas[3],palabraIngresada)==0){
+			if(strcmp(reservadas[3][0],palabraIngresada)==0){
 				contadorCondicional++;
 			}
 				
 			//Contar Condicional 'opciones'
-			if(strcmp(reservadas[5],palabraIngresada)==0){
+			if(strcmp(reservadas[5][0],palabraIngresada)==0){
 				contadorCondicional++;
 			}
 			
