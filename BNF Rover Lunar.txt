@@ -1,8 +1,7 @@
-<Lenguaje>::- "inicio_programa"<LineasCodigo>"fin_programa"
+<Lenguaje>::- "inicioprograma;"<LineasCodigo>";" "finprograma;"
 <LineasCodigo>::- <Instrucciones>|<LineasCodigo><Instrucciones>
 <Instrucciones>::- <Variable>|<Iteracion>|<Seleccion>|<Accion>|<Comentario>
 
-<Comentario>::- "//"<Cadena>
 <Variable>::- <TipoCadena>|<TipoBool>|<TipoFlotante>|<TipoEntero>
 <TipoCadena>::- "string" <Cadena><OperadorAsignacion><Cadena>
 <TipoBool>::- "boolean" <Cadena><OperadorAsignacion><Booleano>
@@ -10,29 +9,29 @@
 <TipoEntero>::- "int" <Cadena><OperadorAsignacion><Entero>
 
 <Iteracion>::- <ItPara>|<ItMientras>|<HacerMientras>
-<ItPara>::- "para("<TipoEntero>";" <Condicion>";" <OperadorIncDec>"){" <LineasCodigo> "}fin_para"
-<ItMientras>::- "mientras(" <Condicion>"){" <LineasCodigo> "}fin_mientras"
-<HacerMientras>::- "hacer{"<LineasCodigo>"}mientras("<Condicion>"){fin_hacerMientras"
+<ItPara>::- "para"<TipoEntero> <Condicion> <OperadorIncDec> <LineasCodigo> "fin para"
+<ItMientras>::- "mientras" <Condicion> <LineasCodigo> "fin mientras"
+<HacerMientras>::- "hacer"<LineasCodigo>"mientras"<Condicion>"fin hacer"
 
 <Seleccion>::- <SelSi> | <SelOpciones>
-<SelSi>::- "si("<Condicion>"){" <LineasCodigo> "}fin_si" | "si("<Condicion>")" <LineasCodigo> "fin_si" "sino" <LineasCodigo> "fin_sino"
-<SelOpciones>::- "opciones("<Condicion>"){"<ConjuntoOpciones> "}fin_opciones"
+<SelSi>::- "si"<Condicion> <LineasCodigo> "fin si" | "si"<Condicion><LineasCodigo> "fin si" "sino" <LineasCodigo> "fin sino"
+<SelOpciones>::- "opciones"<Condicion><ConjuntoOpciones> "fin opciones"
 <ConjuntoOpciones>::- <Casos>|<ConjuntoOpciones><Casos>|<ConjuntoOpciones><DefectoOpcion>
-<Casos>::-"caso" <Cadena> ":" <LineasCodigo> "fin_caso"
-<DefectoOpcion>::- "defecto:" <LineasCodigo> "fin_defecto"
+<Casos>::-"caso" <Cadena>  <LineasCodigo> "fin caso"
+<DefectoOpcion>::- "defecto" <LineasCodigo> "fin defecto"
 
 <Accion>::- <GirarCamara>|<InclinarCamara>|<AlturaCamara>|<GirarRuedas>|<AvanzarRover>|<RetrocederRover>|<PararRover>|<TomarFoto>|<EnviarFoto>|<EnviarUbicacion>
-<GirarCamara>::- "grado_giro_camara" <Decimal> 
-<InclinarCamara>::- "grado_inclinacion_camara" <Decimal> 
-<AlturaCamara>::- "centimetros_altura_camara" <Decimal>
-<GirarRuedas>::- "centimetros_girar_ruedas" <Decimal>
+<GirarCamara>::- "girocamara" <Decimal> "grados"
+<InclinarCamara>::- "inclinacioncamara" <Decimal> "grados"
+<AlturaCamara>::- "alturacamara" <Decimal> "centimetros"
+<GirarRuedas>::- "girarruedas" <Decimal> "grados"
 <AvanzarRover>::- "avanzar" <Decimal> "metros" <Velocidad>
 <RetrocederRover>::- "retroceder" <Decimal> "metros" <Velocidad>
-<Velocidad>::-<Decimal> "km/h"
+<Velocidad>::-<Decimal> "kmhora"
 <PararRover>::- "detenerse"
-<TomarFoto>::-"tomar foto"
-<EnviarFoto>::-"enviar foto"
-<EnviarUbicacion>::-"enviar ubicacion"<cadena>
+<TomarFoto>::-"tomarfoto"
+<EnviarFoto>::-"enviarfoto"
+<EnviarUbicacion>::-"enviarubicacion"
 
 <Condicion>::- <Operando><OperadorComparacion><Operando> | <Operando><OperadorLogico><Operando>
 <Operando>::- <Cadena>|<Entero>|<Decimal>|<Booleano>
@@ -45,7 +44,7 @@
 <Cadena>::- <Letra>|<Entero>|<Decimal>|<Caracteres>|<Cadena><Letra>|<Cadena><Entero>|<Cadena><Decimal>|<Cadena><Caracteres>
 <Numero>::-<Digito>|<Numero><Digito>
 <Entero>::-<Signo><Numero>
-<Decimal>::- <Entero>.<Numero>
+<Decimal>::- <Entero>.<Numero>"
 <Tipo>::- "boolean"|"int"|"float"|"string"
 <Caracteres>::- "|'|!|#|$|%|&|/|(|)|?|¿|{|}|.|:|,|;|_|[|]
 <Signo>::- +|-|ɛ
