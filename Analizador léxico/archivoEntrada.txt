@@ -1,11 +1,65 @@
 inicioprograma;
 
-boolean Variable = verdadero;
+boolean VariableUno = verdadero;
+string VariableDos = "Hola";
+int Numero = 1;
+float Flotante=1,1;
 
-si 1 = 0;
-	Variable = falso;
+mientras (Numero < 3);
+	escribir "Hola Mundo";
+	Numero = Numero+1;
+fin mientras;
+
+si (Variable=falso);
+	Flotante = 1,923;
 fin si;
 
-finprograma;
-	
+hacer;
+	VariableDos = "Adios Mundo";
+	Numero = Numero + 1;
+	mientras (Numero < 5);
+fin hacer;
 
+para (int I = 0; I < 5; I++);
+	escribir "Lenguajes De Programacion";
+
+	si(I=2);
+		escribir "Lenguajes De Programacion Se Ha Escrito 3 Veces";
+	fin si;
+fin para;
+
+escribir "A Continuacion Se Muestran Las Funciones Del Rover Lunar";
+
+enviarubicacion;
+
+avanzar 102,3 metros 2,1 kmhora;
+
+detenerse;
+
+retroceder 6,4 metros 0,8 kmhora;
+
+detenerse;
+
+girarruedas 45 grados;
+
+alturacamara 70 centimetros;
+
+girocamara 180 grados;
+
+tomarfoto;
+
+enviarfoto;
+
+girocamara 20,2 grados;
+
+alturacamara 29,4 centimetros;
+
+inclinacioncamara 45 grados;
+
+tomarfoto;
+
+enviarfoto;
+
+enviarubicacion;
+
+finprograma;
