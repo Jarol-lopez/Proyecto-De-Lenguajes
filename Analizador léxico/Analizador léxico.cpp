@@ -109,9 +109,20 @@ int main(){
 	printf("Simbolos: %d\n", contadorSimbolos);
 	printf("Ciclos: %d\n", contadorCiclos/2);
 	printf("Condicional: %d\n", contadorCondicional/2);
+	printf("Elementos: %d\n", contadorElementos);
 	printf("Variables: %d\n", contadorVariables);
 	printf("Numeros: %d\n", contadorNumeros);
 	printf("Aritmeticos: %d\n", contadorSignos);
+	printf("Giros de camara: %d\n", contadorGiroCamara);
+	printf("Inclinaciones de camara: %d\n", contadorInclinacionCamara);
+	printf("Veces que se ajusto la altura de la camara: %d\n", contadorAlturaCamara);
+	printf("Giros de las ruedas: %d\n", contadorGirarRuedas);
+	printf("Veces que se avanzo: %d\n", contadorAvanzar);
+	printf("Veces que se retrocedio: %d\n", contadorRetroceder);
+	printf("Veces que se detuvo: %d\n", contadorDetenerse);
+	printf("Fotos tomadas: %d\n", contadorTomarFoto);
+	printf("Fotos enviadas: %d\n", contadorEnviarFoto);
+	printf("Ubicaciones enviadas: %d\n", contadorEnviarUbicacion);
 	
 	//Escribimos en el archivo de salida:
 	fputs("-----------TABLA DE ELEMENTOS-----------\n", archivoS);
@@ -119,9 +130,20 @@ int main(){
 	fprintf(archivoS, "\nSimbolos: %d", contadorSimbolos);
 	fprintf(archivoS, "\nCiclos: %d", contadorCiclos/2);
 	fprintf(archivoS, "\nCondicional: %d", contadorCondicional/2);
+	fprintf(archivoS, "\nElementos: %d", contadorElementos);
 	fprintf(archivoS, "\nVariables: %d", contadorVariables);
 	fprintf(archivoS, "\nNumeros: %d", contadorNumeros);
 	fprintf(archivoS, "\nAritmeticos: %d", contadorSignos);
+	fprintf(archivoS, "\nGiros de camara: %d", contadorGiroCamara);
+	fprintf(archivoS, "\nInclinaciones de camara: %d", contadorInclinacionCamara);
+	fprintf(archivoS, "\nVeces que se ajusto la altura de la camara: %d", contadorAlturaCamara);
+	fprintf(archivoS, "\nGiros de las ruedas: %d", contadorGirarRuedas);
+	fprintf(archivoS, "\nVeces que se avanzo: %d",contadorAvanzar);
+	fprintf(archivoS, "\nVeces que se retrocedio: %d", contadorRetroceder);
+	fprintf(archivoS, "\nVeces que se detuvo: %d", contadorDetenerse);
+	fprintf(archivoS, "\nFotos tomadas: %d", contadorTomarFoto);
+	fprintf(archivoS, "\nFotos enviadas: %d", contadorEnviarFoto);
+	fprintf(archivoS, "\nUbicaciones enviadas: %d", contadorEnviarUbicacion);
 }
 
 void AnalizadorCaracter(char caracter){
@@ -280,7 +302,7 @@ void Estados(){
 			break;
 			case 10:contadorSignos++; // Para el signo '-'
 			break;
-			case 11:contadorSimbolos++; // Para el símbolo '=
+			case 11:contadorSimbolos++; // Para el símbolo '='
 			break;
 			case 12:contadorSimbolos++; // Para el símbolo '<'
 			break;
@@ -288,7 +310,7 @@ void Estados(){
 			break;
 			case 15:contadorSimbolos++; // Para el símbolo '=' 
 			break;
-			case 16:contadorSimbolos++; // Para los símbolo '/' '=' ';'
+			case 16:contadorSimbolos++; // Para los símbolo '=' ';'
 			break;
 			case 17:contadorSignos++; // Para el signo '-' '+'
 			break;
@@ -334,6 +356,73 @@ void PalabrasReservadas(){
 			//Contar Condicional 'opciones'
 			if(strcmp(reservadas[5][0],palabraIngresada)==0){
 				contadorCondicional++;
+			}
+			
+			//Contar las variables: se consideran variables aquellas que sean definidas con los  tipos boolean, string, int y float.
+			if(strcmp(reservadas[9][0],palabraIngresada)==0){
+				contadorVariables++;
+			}
+			
+			if(strcmp(reservadas[10][0],palabraIngresada)==0){
+				contadorVariables++;
+			}
+			
+			if(strcmp(reservadas[11][0],palabraIngresada)==0){
+				contadorVariables++;
+			}
+			
+			if(strcmp(reservadas[12][0],palabraIngresada)==0){
+				contadorVariables++;
+			}
+			
+			//Contar los giros de la cámara
+			if(strcmp(reservadas[18][0],palabraIngresada)==0){
+				contadorGiroCamara++;
+			}
+			
+			//Contar laa inclinaciones de la cámara
+			if(strcmp(reservadas[19][0],palabraIngresada)==0){
+				contadorInclinacionCamara++;
+			}
+			
+			//Contar las elevaciones o descenso de la cámara
+			if(strcmp(reservadas[21][0],palabraIngresada)==0){
+				contadorAlturaCamara++;
+			}
+			
+			//Contar los giros de la cámara
+			if(strcmp(reservadas[22][0],palabraIngresada)==0){
+				contadorGirarRuedas++;
+			}
+			
+			//Contar el avanzar del Rover
+			if(strcmp(reservadas[23][0],palabraIngresada)==0){
+				contadorAvanzar++;
+			}
+			
+			//Contar el retroceder del Rover
+			if(strcmp(reservadas[24][0],palabraIngresada)==0){
+				contadorRetroceder++;
+			}
+			
+			//Contar el detenerse del Rover
+			if(strcmp(reservadas[25][0],palabraIngresada)==0){
+				contadorDetenerse++;
+			}
+			
+			//Contar las tomas de foto del Rover
+			if(strcmp(reservadas[28][0],palabraIngresada)==0){
+				contadorTomarFoto++;
+			}
+			
+			//Contar el enviado de foto del Rover
+			if(strcmp(reservadas[29][0],palabraIngresada)==0){
+				contadorEnviarFoto++;
+			}
+			
+			//Contar el enviado de ubicación del Rover
+			if(strcmp(reservadas[30][0],palabraIngresada)==0){
+				contadorEnviarUbicacion++;
 			}
 			
 			//Cuenta las palabras reservadas que encuentre
