@@ -9,13 +9,40 @@ void Estados();//Función para mandar los estados de los caracteres leídos
 void PalabrasReservadas();//Función para identificar las palabras reservadas del lenguaje
 
 //TABLA DE SÍMBOLOS en forma de arreglo bidimensional que contiene las palabras reservadas del lenguaje:
-const char *reservadas[][2] = {{"para","Ciclo para, para repetir instrucciones"},{"mientras","Ciclo mientras, para repetir instrucciones"},
-{"hacer","Ciclo hacer, la misma idea del do while"},{"si","Condicional si, para evaluar condiciones"},
-{"sino","Para ejecutar instrucciones en caso de que no se cumpla la condición en el condicional si"},{"opciones","Condicional opciones, la misma idea del switch"},
-{"caso","Los casos del condicional opciones"},{"defecto","La opción por defecto del condicional opciones si no se cumple ninguno de los casos"},
-{"fin","Para declarar el fin de las estructuras"},{"string","Tipo de dato de cadena"},{"int","Tipo de dato numérico entero"},
-{"boolean","Tipo de dato booleano, verdadero, falso, 1 ó 0"},{"float","Tipo de dato numérico decimal"},{"verdadero","Valor verdadero"},{"falso","Valor falso"},
-{"inicioprograma","Para declarar el inicio del programa"},{"finprograma","Para declarar el fin del programa"}};
+const char *reservadas[][2] = {
+	{"para","Ciclo para, para repetir instrucciones"},
+	{"mientras","Ciclo mientras, para repetir instrucciones"},
+	{"hacer","Ciclo hacer, la misma idea del do while"},
+	{"si","Condicional si, para evaluar condiciones"},
+	{"sino","Para ejecutar instrucciones en caso de que no se cumpla la condición en el condicional si"},
+	{"opciones","Condicional opciones, la misma idea del switch"},
+	{"caso","Los casos del condicional opciones"},
+	{"defecto","La opción por defecto del condicional opciones si no se cumple ninguno de los casos"},
+	{"fin","Para declarar el fin de las estructuras"},
+	{"string","Tipo de dato de cadena"},
+	{"int","Tipo de dato numérico entero"},
+	{"boolean","Tipo de dato booleano, verdadero, falso, 1 ó 0"},
+	{"float","Tipo de dato numérico decimal"},
+	{"verdadero","Valor verdadero"},
+	{"falso","Valor falso"},
+	{"inicioprograma","Para declarar el inicio del programa"},
+	{"finprograma","Para declarar el fin del programa"}
+	//A continuación las palabras reservadas para el uso del Rover Lunar:
+	{"grados","Para definir los grados de inclinación de la cámara o el giro de las ruedas o cámara"}, //posición 17
+	{"girocamara","Para girar la cámara"}, //posición 18
+	{"inclinacioncamara","Para inclinar la cámara"}, //posición 19 
+	{"centimetros","Para definir los centímetros de altura de la cámara"}, //posición 20
+	{"alturacamara","Para definir los centímetros de altura de la cámara"}, //posición 21
+	{"girarruedas","Para girar las ruedas"}, //posición 22
+	{"avanzar","Para avanzar"}, //posición 23
+	{"retroceder","Para retroceder"}, //posición 24
+	{"detenerse","Para detenerse"}, //posición 25
+	{"metros","Para definir la cantidad de metros de desplazamiento"}, //posición 26
+	{"kmhora","Para definir la velocidad en Km/h con la que se desplazará la distancia indicada."}, //posición 27
+	{"tomarfoto","Para indicarle al Rover que tome una foto"}, //posición 28
+	{"enviarfoto","Para indicarle al Rover que tome una foto"}, //posición 29
+	{"enviarubicacion","Para indicarle al Rover que envie su ubicación"}, //posición 30
+	{"escribir","Para poder escribir"}};};
 
 int Tamano=sizeof(reservadas)/sizeof(char *);//El tamano de 'reservadas' y el tamano de memoria del char
 char palabraIngresada[70]; //Variable para almacenar los caracteres concatenados que forman las palabras
@@ -26,6 +53,8 @@ enum TEstados{q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,
 TEstados Estado=q0;
 
 //Contadores de los elementos de la tabla que se escribirá en el archivo de salida:
+//--Contadores de estructura del lenguaje:
+int contadorElementos = 0; //Se refiere a los elementos (palabras) que no son propios del lenguaje de programación
 int contadorVariables=0;
 int contadorNumeros=0;
 int contadorPalabrasReservadas=0;
@@ -33,6 +62,17 @@ int contadorSimbolos=0;
 int contadorSignos=0;
 int contadorCiclos=0;
 int contadorCondicional=0;
+//--Contadores de las funciones del Rover Lunar:
+int contadorGiroCamara = 0;
+int contadorInclinacionCamara = 0;
+int contadorAlturaCamara = 0;
+int contadorGirarRuedas = 0;
+int contadorAvanzar = 0;
+int contadorRetroceder = 0;
+int contadorDetenerse = 0;
+int contadorTomarFoto = 0;
+int contadorEnviarFoto = 0;
+int contadorEnviarUbicacion = 0;
 
 
 int main(){
