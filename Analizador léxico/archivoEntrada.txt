@@ -1,0 +1,11 @@
+inicioprograma;
+
+boolean Variable = verdadero;
+
+si 1 = 0;
+	Variable = falso;
+fin si;
+
+finprograma;
+	
+

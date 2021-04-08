@@ -1,0 +1,8 @@
+-----------TABLA DE ELEMENTOS-----------
+Palabras Reservadas: 8
+Simbolos: 9
+Ciclos: 0
+Condicional: 1
+Variables: 2
+Numeros: 2
+Aritmeticos: 0
